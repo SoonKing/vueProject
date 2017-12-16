@@ -12,6 +12,13 @@ import AppComponent from './component/App.vue';
 //2.2导入路由配置
 import routerConfig from './router'; //写一个目录会自动找index.js
 
+
+//3.导入配置后的axios和api注入到vue 原型中,这样组件就可已通过this调用
+import axios from './js/axios_config.js';
+import api from './js/api_config.js';
+Vue.prototype.$http = axios;
+Vue.prototype.$api = api;
+
 //渲染组件,启动应用程序
 new Vue({
     el: "#app",
