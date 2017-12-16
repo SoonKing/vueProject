@@ -1,8 +1,6 @@
 <template>
   <div>
-    测12313
-    <!-- 使用 -->
-   <router-view></router-view>
+首页
   </div>
 </template>
 

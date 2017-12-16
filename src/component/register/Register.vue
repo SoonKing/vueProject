@@ -1,8 +1,6 @@
 <template>
   <div>
-    测12313
-    <!-- 使用 -->
-   <router-view></router-view>
+注册
   </div>
 </template>
 
