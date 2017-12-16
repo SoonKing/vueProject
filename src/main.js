@@ -5,6 +5,7 @@ import VueRouter from 'vue-router';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'normalize.css';
+import './less/index.less';
 
 //1.2启动vue 插件(默认在浏览器中自动安装,但是组件化就需要使用use)
 Vue.use(VueRouter);
