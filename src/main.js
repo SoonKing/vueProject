@@ -1,9 +1,15 @@
 //1.1导入第三方包
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+//引入element-ui和css
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import 'normalize.css';
 
 //1.2启动vue 插件(默认在浏览器中自动安装,但是组件化就需要使用use)
 Vue.use(VueRouter);
+Vue.use(ElementUI);
+
 
 
 //2.1导入跟组件
