@@ -20,6 +20,14 @@ main {
     text-decoration: none;
 }
 
+//设置状态的字体--默认为浅灰色
+[class^=el-icon-]{
+    color:rgba(0,0,0,.3);
+    &.active{
+        color:#000;
+    }
+}
+
 //左侧导航
 .aside {
     // 文本超出不出现滚动条

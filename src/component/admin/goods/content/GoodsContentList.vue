@@ -17,10 +17,10 @@
       </div>
       <!-- 搜索框 -->
       <div class="list_util_search">
-        <el-input size="small"
-          placeholder="请输入内容"
-          prefix-icon="el-icon-search">
-        </el-input>
+        <!-- 当焦点离开时, 调用接口获取搜索后的数据列表 -->
+         <el-input @blur="getTableList"  v-model="query.searchvalue" size="small" placeholder="请输入内容" prefix-icon="el-icon-search">   
+         </el-input>
+
       </div>
     </section>
 
@@ -28,19 +28,31 @@
      <el-table ref="multipleTable" :data="tableList" tooltip-effect="dark"
     style="width: 100%" height="400">
 <!-- 多选框列 -->
-    <el-table-column type="selection"  width="55">
-    </el-table-column>
+    <el-table-column type="selection"></el-table-column>
 <!-- 普通列:label用于设置表头信息,prop用于该列展示的字段名称 -->
-    <el-table-column label="日期" prop="date">
+    <el-table-column label="商品名称" prop="title">
+    </el-table-column>
+    <el-table-column width="100" label="所属类别" prop="categoryname">
+    </el-table-column>
+    <el-table-column width="100" label="库存" prop="stock_quantity">
+    </el-table-column>
+    <el-table-column width="100" label="市场价" prop="market_price">
+    </el-table-column>
+    <el-table-column width="100" label="销售价" prop="sell_price">
     </el-table-column>
         <!-- 普通咧,template设置任意html结构 -->
-    <el-table-column prop="name" label="姓名">
-       <template slot-scope="scope">
-       <a href="">{{ scope.row.name }}</a> 
+      <el-table-column width="100" label="状态"> <!-- 在temoplate里面, 需要通过scope.row拿到每一行数据 -->
+        <template slot-scope="scope">
+              <i :class="['el-icon-upload2', scope.row.is_top? 'active': '']"></i>
+              <i :class="['el-icon-phone-outline', scope.row.is_hot? 'active': '']"></i>
+              <i :class="['el-icon-picture', scope.row.is_slide? 'active': '']"></i>
         </template>
     </el-table-column>
 
-    <el-table-column prop="address" label="地址" show-overflow-tooltip>
+    <el-table-column width="100" label="操作">
+         <template slot-scope="scope">
+            <a href="">修改</a>
+        </template>
     </el-table-column>
   </el-table>
 
@@ -48,7 +60,7 @@
   <!-- 分页 @size-change监听一页数据的变化(页码的大小),current-change页码的变化 -->
   <!--  current-page设置当前第几页 page-size每页的条目的可选项-->
   <!--layout 设置需要使用那些分页小组件 -->
-  <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="currentPage4" :page-sizes="[100, 200, 300, 400]" :page-size="100" layout="total, sizes, prev, pager, next,jumper" :total="400">
+  <el-pagination @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="query.pageIndex" :page-sizes="[10, 20, 30, 40]" :page-size="query.pageSize" layout="total, sizes, prev, pager, next,jumper" :total="totalcount">
 
     </el-pagination>
 
@@ -60,32 +72,44 @@
   export default {
     data(){
       return {
-        tableList:[
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'123',address:'吉山上街'},
-          {date:2017,name:'456'},
-          {date:2017,name:'789'},
-        ]
+        query:{
+          pageIndex:1,
+          pageSize:10,
+          searchvalue:'',  
+        },
+        //数量总量
+        totalcount:0,
+        //列表数据
+        tableList:[],
       }
     },
     methods:{
-      handleSizeChange(){},
-      handleCurrentChange(){},
+        //获取商品列表的方法
+        getTableList(){
+          //get方法的第二个参数用来查询制定字符串,header头信息等内
+          this.$http.get(this.$api.gsList,{params:this.query})
+          .then(res=>{
+            this.tableList=res.data.message;
+            this.totalcount=res.data.totalcount;
+          })
+        },
+
+
+      //每页的数量变化的时候触发
+      handleSizeChange(pageSize){
+        this.query.pageSize=pageSize;
+        this.getTableList();
+      },
+      //页码变化的时候触发
+      handleCurrentChange(pageIndex){
+        this.query.pageIndex=pageIndex;
+        this.getTableList();
+      },
+
+    },
+    created(){
+      //页面一上来就请求接口获取商品列表进行展示
+      this.getTableList();
     }
   }
 </script>

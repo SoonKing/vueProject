@@ -14,6 +14,12 @@ main {
   color: #fff;
   text-decoration: none;
 }
+[class^=el-icon-] {
+  color: rgba(0, 0, 0, 0.3);
+}
+[class^=el-icon-].active {
+  color: #000;
+}
 .aside {
   overflow: initial;
 }
