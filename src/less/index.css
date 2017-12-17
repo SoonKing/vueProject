@@ -3,4 +3,18 @@ body,
 main {
   height: 100%;
 }
+.router-link-active {
+  color: #fff;
+  text-decoration: none;
+}
+.aside {
+  overflow: initial;
+}
+.aside .el-menu {
+  border-right: 0;
+}
+.aside .el-menu-item-group_title {
+  padding: 0;
+  right: 0;
+}
 /*# sourceMappingURL=./index.css.map */

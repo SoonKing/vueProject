@@ -41,7 +41,7 @@
       return {
         //用户将来提交给后台的用户字段
           user:{
-            "name":"",
+            "uname":"",
             "upwd":""
           },
           ruleLoginForm:{

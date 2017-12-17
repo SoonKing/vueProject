@@ -1,3 +1,29 @@
-html,body,main{
-  height: 100%;
+html,
+body,
+main {
+    height: 100%;
+}
+
+.router-link-active {
+    color: #fff;
+    text-decoration: none;
+}
+
+
+
+//左侧导航
+.aside {
+    // 文本超出不出现滚动条
+    overflow: initial;
+
+    //去掉右侧导航部分
+    .el-menu{
+      border-right:0;
+
+    }
+    //去掉自导航的标题高度
+    .el-menu-item-group_title{
+      padding: 0;
+      right: 0;
+    }
 }

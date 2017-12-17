@@ -1,6 +1,6 @@
 //导出域名
-export const domain = 'http://157.122.54.189:9095'
-    //该模块向外导出一个对象,里面存储了项目所需要的所有api信息
+export const domain = 'http://157.122.54.189:9095';
+//该模块向外导出一个对象,里面存储了项目所需要的所有api信息
 export default {
     //账号管理
     login: `/admin/account/login`, //登录

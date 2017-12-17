@@ -1,6 +1,7 @@
 //导入组件
-import HomeComponent from '../component/home/Home.vue';
+
 import LoginComponent from '../component/login/Login.vue';
+import AdminComponent from '../component/admin/Admin.vue';
 
 
 
@@ -9,7 +10,11 @@ import LoginComponent from '../component/login/Login.vue';
 
 export default {
     routes: [
-        { name: "h", path: "/home", component: HomeComponent },
-        { name: "l", path: "/login", component: LoginComponent }
+
+        //后台管理页面
+        { name: "h", path: "/", component: AdminComponent, children: [] },
+
+        //账号管理
+        { name: "l", path: "/login", component: LoginComponent },
     ]
 };
