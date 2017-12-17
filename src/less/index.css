@@ -4,6 +4,13 @@ main {
   height: 100%;
 }
 .router-link-active {
+  text-decoration: none;
+  color: #fff;
+}
+.el-table thead tr {
+  background-color: #e7e7d0;
+}
+.router-link-active {
   color: #fff;
   text-decoration: none;
 }
