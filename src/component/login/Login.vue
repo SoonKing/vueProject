@@ -58,24 +58,23 @@
       };
     },
   methods:{
-//登录
-login(){
-  //登陆成功之后,
-  //1.判断status是否为0,部位0给出提示
-  //2.如果为1,书名登录成功,本地localstorage存储返回的用户信息
-  //3.跳转到后台管理
-
- this.$http.post(this.$api.login,this.user)
-          .then(res => {
-            let {status,message}=res.data;
-            if(status==0){
-              localStorage.setItem('user',JSON.stringify(message));//转换为字符串
-              this.$router.push('/')
-            }else{
-              alert('瞎搞')
-            }
-          });
-},
+      //登录
+      login(){
+        //登陆成功之后,
+        //1.判断status是否为0,部位0给出提示
+        //2.如果为1,书名登录成功,本地localstorage存储返回的用户信息
+        //3.跳转到后台管理
+        this.$http.post(this.$api.login,this.user)
+              .then(res => {
+                let {status,message}=res.data;
+                if(status==0){
+                localStorage.setItem('user',JSON.stringify(message));//转换为字符串
+                this.$router.push('/')
+                }else{
+                 alert('瞎搞')
+                }
+              });
+      },
 
     //登录 ---提交调用接口  
     loginForm(formName){
