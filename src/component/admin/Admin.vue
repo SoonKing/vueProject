@@ -10,8 +10,10 @@
     <el-header>
       <app-header></app-header>
       </el-header>
-    <!-- 右侧主体, 变化部分 -->
-    <el-main>Main</el-main>
+    <!-- 右侧主体, 子路由控制变化部分 -->
+    <el-main>
+      <router-view></router-view>
+    </el-main>
   </el-container>
 </el-container>
 
