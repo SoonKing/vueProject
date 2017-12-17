@@ -1,6 +1,11 @@
 
 <template>
   <div class="aside">
+
+      <div class="logo">
+        <img src="../../../img/logo.png" alt="logo">
+    </div>
+
   
        <el-menu
           default-active="2"
@@ -79,9 +84,13 @@
 <style scoped lang="less">
   .aside{
     height: 100%;
+    .logo {
+         text-align: center;
+        }
     .el-menu{
       height: 100%;
       text-align: left;
     }
   }
+ 
 </style>

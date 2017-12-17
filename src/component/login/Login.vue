@@ -64,7 +64,7 @@
       this.$refs[formName].validate(result=>{
         if(result){
           this.$http.post(this.$api.login,this.user)
-          .then(res=>this.$router.push('/'));
+          .then(rsp => this.$router.push({ name: 'a', params: { uname: rsp.data.message.uname } }));
         }else{
           return false;
         }

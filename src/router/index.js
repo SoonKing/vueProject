@@ -12,7 +12,7 @@ export default {
     routes: [
 
         //后台管理页面
-        { name: "h", path: "/", component: AdminComponent, children: [] },
+        { name: "a", path: "/", component: AdminComponent, children: [] },
 
         //账号管理
         { name: "l", path: "/login", component: LoginComponent },

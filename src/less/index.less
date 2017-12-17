@@ -9,21 +9,20 @@ main {
     text-decoration: none;
 }
 
-
-
 //左侧导航
 .aside {
     // 文本超出不出现滚动条
-    overflow: initial;
-
-    //去掉右侧导航部分
-    .el-menu{
-      border-right:0;
-
+    overflow: initial; //去掉右侧导航部分
+    .el-menu {
+        border-right: 0;
+    } //去掉自导航的标题高度
+    .el-menu-item-group_title {
+        padding: 0;
+        right: 0;
     }
-    //去掉自导航的标题高度
-    .el-menu-item-group_title{
-      padding: 0;
-      right: 0;
-    }
+}
+
+.el-submenu__title i {
+    font-size: 16px;
+    color: #fff;
 }
