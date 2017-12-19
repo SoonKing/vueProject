@@ -18,7 +18,7 @@ import GoodsCategoryEditComponent from '../component/admin/goods/category/GoodsC
 export default [
     { name: 'gctl', path: 'goods/content/list', component: GoodsContentListComponent },
     { name: 'gcta', path: 'goods/content/add', component: GoodsContentAddComponent },
-    { name: 'gcte', path: 'goods/content/edit', component: GoodsContentEditComponent },
+    { name: 'gcte', path: 'goods/content/edit:id', component: GoodsContentEditComponent },
 
     { name: 'gcgl', path: 'goods/category/list', component: GoodsCategoryListComponent },
     { name: 'gcga', path: 'goods/category/add', component: GoodsCategoryAddComponent },
