@@ -96,9 +96,8 @@
     data() {
       return {
         //图片,文件上传的数据
-        uploadImgUrl:this.$api.atImg,
-        uploadFileUrl:this.$api.atFile,
-
+        uploadImgUrl: this.$apiDomain + this.$api.atImg,
+        uploadFileUrl:this.$apiDomain +this.$api.atFile,
         id: this.$route.params.id,
         //表单数据
         ruleForm: {
@@ -158,10 +157,10 @@
     },
     methods: {
       //封面上传成功之后的操作,要把服务器端返回的url的结果,保存到form表单中,将来提交到客户端
-      //封面只哟一张
+      //封面只有一张
       uploadImgHandler(data){
-        // console.log(arguments);
-        this.ruleForm.imgList=[data];//复制一个新数组
+        console.log(arguments);
+        this.ruleForm.imgList=[data];//赋值一个新数组
         
       },
       //附件上传成功
@@ -186,8 +185,7 @@
           // console.log(res.data.message.category_id);
           //为了让res能够自动选取默认的值,把category_id转换为num类型的数据
           res.data.message.category_id= +res.data.message.category_id;
-          // console.log(res.data.message.category_id);
-          
+          // console.log(res.data.message.category_id);    
           this.ruleForm=res.data.message;
           // console.log(this.ruleForm);
         })

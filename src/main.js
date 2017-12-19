@@ -25,7 +25,7 @@ import axios from './js/axios_config.js';
 import api, { domain } from './js/api_config.js';
 Vue.prototype.$http = axios;
 Vue.prototype.$api = api;
-Vue.prototype.$apidomain = domain;
+Vue.prototype.$apiDomain = domain;
 
 //导入路由守卫,添加路由守卫,做登录校验
 import routerGuard from './router/guard.js'
