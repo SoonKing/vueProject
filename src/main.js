@@ -26,9 +26,15 @@ import api from './js/api_config.js';
 Vue.prototype.$http = axios;
 Vue.prototype.$api = api;
 
+//导入路由守卫,添加路由守卫,做登录校验
+import routerGuard from './router/guard.js'
+const vueRouter = new VueRouter(routerConfig);
+
+vueRouter.beforeEach(routerGuard);
+
 //渲染组件,启动应用程序
 new Vue({
     el: "#app",
     render: c => c(AppComponent),
-    router: new VueRouter(routerConfig)
+    router: vueRouter
 })

@@ -7,12 +7,7 @@
     </div>
 
   
-       <el-menu
-          default-active="2"
-          class="el-menu-vertical-demo"
-          background-color="#545c64"
-          text-color="#fff"
-          active-text-color="#ffd04b">
+       <el-menu default-active="2" class="el-menu-vertical-demo" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
   <!-- 导航列表  key属性用于for循环时候的渲染优化,index属性也要设置唯一的 -->
       <el-submenu v-for="item in menuList" :key="item.title" :index="item.title" >
         <template slot="title">
@@ -65,11 +60,17 @@
             {title:'类别管理',path:'/'},
             {title:'评论管理',path:'/'},
           ]},
-          {title:'商品管理',children:
+          {title:'购物商场',children:
           [
             {title:'内容管理',path:'/'},
             {title:'类别管理',path:'/'},
             {title:'评论管理',path:'/'},
+          ]},
+          {title:'商品管理',children:
+          [
+            {title:'内容管理',path:'/goods/content/list'},
+            {title:'类别管理',path:'/goods/category/list'},
+            {title:'评论管理',path:'/goods/comment/list'},
           ]},
           {title:'订单管理',children:
           [

@@ -11,7 +11,7 @@
     <!-- 按钮组 -->
     <section class="list_util">
       <div class="list_util_btn">
-          <el-button plain size="small" icon="el-icon-plus">新增</el-button>
+          <el-button plain size="small" icon="el-icon-plus" @click="Add">新增</el-button>
           <el-button plain size="small" icon="el-icon-success">全选</el-button>
           <el-button plain size="small" icon="el-icon-delete">删除</el-button>
       </div>
@@ -40,12 +40,22 @@
     </el-table-column>
     <el-table-column width="100" label="销售价" prop="sell_price">
     </el-table-column>
+
+    
         <!-- 普通咧,template设置任意html结构 -->
-      <el-table-column width="100" label="状态"> <!-- 在temoplate里面, 需要通过scope.row拿到每一行数据 -->
+      <el-table-column width="100" label="状态"> 
+        <!-- 在temoplate里面, 需要通过scope.row拿到每一行数据 -->
         <template slot-scope="scope">
+
+            <el-tooltip content="置顶" placement="bottom" effect="light">
               <i :class="['el-icon-upload2', scope.row.is_top? 'active': '']"></i>
+              </el-tooltip>
+              <el-tooltip content="热门" placement="bottom" effect="light">
               <i :class="['el-icon-phone-outline', scope.row.is_hot? 'active': '']"></i>
+              </el-tooltip>
+              <el-tooltip content="轮播" placement="bottom" effect="light">
               <i :class="['el-icon-picture', scope.row.is_slide? 'active': '']"></i>
+              </el-tooltip>
         </template>
     </el-table-column>
 
@@ -54,6 +64,7 @@
             <a href="">修改</a>
         </template>
     </el-table-column>
+
   </el-table>
 
 
@@ -81,6 +92,7 @@
         totalcount:0,
         //列表数据
         tableList:[],
+        id:0,
       }
     },
     methods:{
@@ -89,8 +101,12 @@
           //get方法的第二个参数用来查询制定字符串,header头信息等内
           this.$http.get(this.$api.gsList,{params:this.query})
           .then(res=>{
+            // console.log(res);
             this.tableList=res.data.message;
             this.totalcount=res.data.totalcount;
+            this.id=res.data.id
+            // console.log(res.data.message);
+            
           })
         },
 
@@ -105,6 +121,11 @@
         this.query.pageIndex=pageIndex;
         this.getTableList();
       },
+
+      //添加数据的方法
+      Add(){
+       this.$router.push({name:'gcta'})
+      }
 
     },
     created(){
@@ -138,6 +159,7 @@
       border:1px solid #ddd;
       background-color: #fff;
     }
+
   
 }
 

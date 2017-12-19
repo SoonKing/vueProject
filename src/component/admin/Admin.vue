@@ -12,6 +12,7 @@
       </el-header>
     <!-- 右侧主体, 子路由控制变化部分 -->
     <el-main>
+      <!-- 子路由占位置 -->
       <router-view></router-view>
     </el-main>
   </el-container>

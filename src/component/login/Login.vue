@@ -61,8 +61,8 @@
       //登录
       login(){
         //登陆成功之后,
-        //1.判断status是否为0,部位0给出提示
-        //2.如果为1,书名登录成功,本地localstorage存储返回的用户信息
+        //1.判断status是否为0,如果是0,给出错误提示
+        //2.如果为1,说明登录成功,本地localstorage存储返回的用户信息
         //3.跳转到后台管理
         this.$http.post(this.$api.login,this.user)
               .then(res => {
